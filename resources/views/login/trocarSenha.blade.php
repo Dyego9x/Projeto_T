@@ -39,28 +39,25 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-2">Esqueceu sua senha?</h1>
-                                        <p class="mb-4">Informe o CPF cadastrado abaixo que iremos encaminhar um link de redefinição de senha para o mesmo!</p>
+                                        <h1 class="h4 text-gray-900 mb-2">Trocar senha</h1>                                        
                                     </div>
-                                    <form class="user">
+                                    <form class="user" action="/login/trocarsenha" method="post">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Informe o Email Cadastrado...">
+                                            <input type="text" class="form-control form-control-user"
+                                                id="trocarSenhaPrim" aria-describedby="emailHelp"
+                                                placeholder="Informe a nova senha">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                id="trocarSenhaSec" aria-describedby="emailHelp"
+                                                placeholder="Confirme a senha">
                                         </div>
                                         <div style="align-items: center !important;">
-                                            <button type="submit" class="btn btn-primary btn-user btn-block">Encaminhar Link</button>
+                                            <button type="submit" class="btn btn-primary btn-user btn-block">Trocar Senha</button>
                                         </div>   
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="/login/esqueceu-senha">Criar uma conta!</a>
-                                    </div>
-                                    <div class="text-center">
-
-                                        <a class="small" href="/login">Já possui uma conta? Entrar!</a>
-                                    </div>
+                                    <hr>                                    
                                 </div>
                             </div>
                         </div>

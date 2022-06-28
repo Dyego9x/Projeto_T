@@ -30,6 +30,13 @@ class DadosUsuariosModel extends Model
         return $CountUsuario;
     }
 
+    public function trocarSenha ($senha, $email){
+        DB::table($this->table)
+            -> where('senha',$senha)
+            -> where('usuario_email',$email)
+            -> update(['usuario_senha',$senha]);
+    }
+
     public function cadastrar($nome, $email, $senha, $cpf){         
         $nomeUsuario = $nome;
         $emailUsuario = $email;

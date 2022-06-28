@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SistemaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +16,36 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login.index');
 });
+
+// GET
 
 Route::get('/login', [LoginController::class, 'index'] );
 Route::get('/login/criar', [LoginController::class, 'create'] );
 Route::get('/login/esqueceu-senha', [LoginController::class, 'esqueceuSenha'] );
+Route::get('/sistema/inicio', [LoginController::class, 'telaInicial'] );
+Route::get('/sistema/importar-notas', [SistemaController::class, 'telaImportarNotas'] );
+
+
+// Teste
+
+Route::get('/emailTest', function (){
+
+    return view ('mail.createEmail');
+
+});
+
+Route::get('/trocar-senha', function (){
+
+    return view ('login.trocarSenha');
+
+});
+
+// POST
+
 Route::post('/login/salvar', [LoginController::class, 'cadastrar'] );
 Route::post('/login/acessar', [LoginController::class, 'acessarPlataforma'] );
-Route::get('/sistema/inicio', [LoginController::class, 'telaInicial'] );
+Route::post('/login/trocarsenha', [LoginController::class, 'trocarSenha'] );
+
+Route::post('/login/salvarNota', [LoginController::class, 'trocarSenha'] );

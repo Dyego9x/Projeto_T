@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Início</title>
+    <title>Importar Notas</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -57,12 +57,7 @@
             </div>            
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{asset('/sistema/importar-notas')}}" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-download"></i>
-                    <span>Importar Notas</span>
-                </a>
+            <li class="nav-item">                
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-list-ol"></i>
@@ -168,12 +163,38 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Início</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                            <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
-                        </a>
-                    </div>                    
-
+                        <h1 class="h3 mb-0 text-gray-800">Importar Notas</h1>                        
+                    </div>      
+                    <form class="user" action="/login/salvarNota" method="post" enctype="multipart/form-data"> 
+                        <br>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="div-ecpf">
+                            <div class="form-group">
+                                <h3>Data da Nota:</h3>
+                                <input type="date" name="dataArquivo" id="dataArquivo" class="form-control form-control-user" style="text-align: center">
+                            </div>                            
+                        </div>  
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="div-ecpf">
+                            <div class="form-group">
+                                <h3>Número da Nota:</h3>
+                                <input type="text" name="numeroNota" id="numeroNota" class="form-control form-control-user" style="text-align: center">
+                            </div>                            
+                        </div>  
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="div-ecpf">
+                            <div class="form-group">
+                                <h3>Valor da Nota:</h3>
+                                <input type="value" name="valorNota" id="valorNota" class="form-control form-control-user" style="text-align: center">
+                            </div>                            
+                        </div>                                                     
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" id="div-ecpf">
+                            <div class="form-group">
+                                <br>                                
+                                <label class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" for="arquivoNota">Importe o arquivo da nota</label>
+                                <span tabindex="1" class="popover-icone icone-pequeno" data-toggle="popover" data-placement="bottom" data-trigger="focus">                        
+                                </span> <br>                                    
+                                <input type="file" class="imagemEcpf form-control" style="display: none" name="arquivoNota" id="arquivoNota">
+                            </div>                            
+                        </div>                                      
+                    </form>                    
                     <!-- Content Row -->                    
 
                 </div>
@@ -196,6 +217,8 @@
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{ asset('js/jquery.mask.min.js')}}"></script>
+
+    <script src="{{ asset('js/importarNotas.js')}}" type="text/javascript"></script>
 
 </body>
 
