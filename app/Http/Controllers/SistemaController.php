@@ -78,7 +78,7 @@ class SistemaController extends Controller
             // Define o nome
             $nameFile = "{$name}.{$extension}";
     
-            // Faz o upload:
+            // Faz o upload: tem que rodar na prompt php artisan storage:link para criar um local no computador
             $upload = $request->arquivoNota->storeAs(''.$idUsuario.'', $nameFile);
             // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
     
