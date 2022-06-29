@@ -79,7 +79,7 @@ class SistemaController extends Controller
             $nameFile = "{$name}.{$extension}";
     
             // Faz o upload:
-            $upload = $request->arquivoNota->storeAs('storage', $nameFile);
+            $upload = $request->arquivoNota->storeAs(''.$idUsuario.'', $nameFile);
             // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
     
             // Verifica se NÃO deu certo o upload (Redireciona de volta)
