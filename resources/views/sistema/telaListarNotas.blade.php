@@ -151,6 +151,75 @@
                             <p>{{session('mensagem')}}</p>
                         </div>
                     @endif
+
+                    <form class="user" action="/sistema/buscarNotas" method="post" enctype="multipart/form-data"> 
+                        @csrf
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                                            
+                                <label class="control-label">
+                                    Pagamento de:
+                                </label>
+                                <input type="date" class="form-control data datepicker" name="dataInicial" id="dataInicial"  autofocus />
+                                
+                            </div>
+                        
+                            <div class="col-md-3">
+                                
+                                <label class="control-label">
+                                    Pagamento até:
+                                </label>
+                                <input type="date" class="form-control data datepicker" name="dataFinal" id="dataFinal"  />
+                                
+                            </div>
+                            <div class="col-md-3">                                
+                                <br>                                
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                                                
+                        <br>
+                        <br>
+                        <div class="row">
+
+                            <div class="col-md-12" id="total-datatable">
+
+                                <hr />
+                                <br />
+
+                                <table class="table padrao table-striped table-bordered table-hover table-header-fixed order-column tabelaPersonalizadaX espacamento_fixo">
+
+                                    <thead>
+
+                                        <tr>
+
+                                            <th>Data</th>
+                                            <th>Valor</th>
+                                            <th>Arquivo</th>
+                                            <th>Excluir</th>
+                                            <th>Editar</th>                                            
+
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody id="empresas">
+
+                                        
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
                                        
                     <!-- Content Row -->                    
 

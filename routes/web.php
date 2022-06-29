@@ -57,3 +57,6 @@ Route::post('/login/trocarsenha', [LoginController::class, 'trocarSenha'] );
 
 //Salva a nota no banco
 Route::post('/login/salvarNota', [SistemaController::class, 'salvarDadosNota'] );
+
+//Consulto os dados das notas
+Route::post('/sistema/buscarNotas', [SistemaController::class, 'buscarDadosNota'] );

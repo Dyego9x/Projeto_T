@@ -88,11 +88,37 @@ class SistemaController extends Controller
                     ->with('error', 'Falha ao fazer upload');                    
             else{
                 $salvarDados = $this->sistemaModel->salvarDadosNota($dataNota, $numeroNota, $valorNota, $idUsuario, $nameFile);
-                return redirect($salvarDados)
-                ->with('mensagem', 'Nota importada com sucesso!');
+                
+                if($salvarDados){
+                    return redirect('/sistema/importar-notas')
+                    ->with('mensagem', 'Nota importada com sucesso!');
+                }else{
+                    return redirect('/sistema/importar-notas')                    
+                    ->with('error', 'Falha ao fazer upload');
+                }
+                
             }
     
         }
+    }
+
+    public function buscarDadosNota(Request $request){
+        $dataInicial = $request->input('dataInicial');
+        $dataFinal = $request->input('dataFinal');
+        $idUsuario = session()->get('usuario')['usuario_id'];
+
+        if(empty($dataInicial)){
+            $dataInicial = '0000-00-00';
+        }
+
+        if(empty($dataFinal)){
+            $dataFinal = '9999-99-99';
+        }
+
+        $dados = $this->sistemaModel->buscarDadosNota($dataInicial, $dataFinal, $idUsuario);
+
+        dd($dados);
+
     }
 
 }

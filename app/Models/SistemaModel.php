@@ -14,7 +14,7 @@ class SistemaModel extends Model
 
     public function salvarDadosNota($data, $numero, $valor, $idUsuario, $nameFile){
 
-        DB::table($this->table)
+        $resultado = DB::table($this->table)
                 ->insert([
                     'usuarionotaimportada_data' => $data,
                     'usuarionotaimportada_numero' => $numero,
@@ -23,7 +23,17 @@ class SistemaModel extends Model
                     'usuarionotaimportada_arquivo' => $nameFile               
                 ]);
         
-        return ('/sistema/importar-notas');
+        return ($resultado);
     }
 
+    public function buscarDadosNota($dataInicial, $dataFinal, $idUsuario) {        
+        $resultado = DB::table($this->table)
+            ->where('usuarionotaimportada_usuario_id', $idUsuario)
+            ->where('usuarionotaimportada_data','>=', $dataInicial)
+            ->where('usuarionotaimportada_data','<=', $dataFinal)
+            
+            ->get();
+
+        return ($resultado);
+    }
 }

@@ -154,25 +154,25 @@
                     <form class="user" action="/login/salvarNota" method="post" enctype="multipart/form-data"> 
                         @csrf
                         <br>
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="div-ecpf">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" >
                             <div class="form-group">
                                 <h3>Data da Nota:</h3>
                                 <input type="date" name="dataArquivo" id="dataArquivo" class="form-control form-control-user" style="text-align: center" required>
                             </div>                            
                         </div>  
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="div-ecpf">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" >
                             <div class="form-group">
                                 <h3>Número da Nota:</h3>
                                 <input type="text" name="numeroNota" id="numeroNota" class="form-control form-control-user" style="text-align: center" required>
                             </div>                            
                         </div>  
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="div-ecpf">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" >
                             <div class="form-group">
                                 <h3>Valor da Nota:</h3>
                                 <input type="value" name="valorNota" id="valorNota" class="form-control form-control-user" style="text-align: center" required>
                             </div>                            
                         </div>                                                     
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" id="div-ecpf">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
                             <div class="form-group">
                                 <br>                                
                                 <label class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" for="arquivoNota">Importe o arquivo da nota</label>
