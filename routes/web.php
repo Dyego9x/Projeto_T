@@ -4,27 +4,25 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SistemaController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('login.index');
 });
 
 // GET
 
+//Tela de login
 Route::get('/login', [LoginController::class, 'index'] );
+
+//Tela de criação de conta
 Route::get('/login/criar', [LoginController::class, 'create'] );
+
+//Tela para recuperar a senha
 Route::get('/login/esqueceu-senha', [LoginController::class, 'esqueceuSenha'] );
+
+//Retorna a tela inicial do sistema
 Route::get('/sistema/inicio', [LoginController::class, 'telaInicial'] );
+
+//Direciona para a tela de importação de notas
 Route::get('/sistema/importar-notas', [SistemaController::class, 'telaImportarNotas'] );
 
 
@@ -44,8 +42,14 @@ Route::get('/trocar-senha', function (){
 
 // POST
 
+//Verifica se não existe um cadastro já feito e salva o novo
 Route::post('/login/salvar', [LoginController::class, 'cadastrar'] );
+
+// Retorna a tela inicial
 Route::post('/login/acessar', [LoginController::class, 'acessarPlataforma'] );
+
+//
 Route::post('/login/trocarsenha', [LoginController::class, 'trocarSenha'] );
 
+//Salva a nota no banco
 Route::post('/login/salvarNota', [LoginController::class, 'trocarSenha'] );
