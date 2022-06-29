@@ -22,12 +22,12 @@ class DadosUsuariosModel extends Model
     }
 
     public function verificarLogin($email, $senha){
-        $CountUsuario = DB::table($this->table)
+        $idUsuario = DB::table($this->table)
             ->where('usuario_email',$email)
             ->where('usuario_senha',$senha)    
-            ->count('usuario_email');
+            ->value('usuario_id');
 
-        return $CountUsuario;
+        return $idUsuario;
     }
 
     public function trocarSenha ($senha, $email){

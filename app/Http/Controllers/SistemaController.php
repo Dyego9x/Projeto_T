@@ -6,16 +6,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use App\models\DadosUsuariosModel;
+use App\models\SistemaModel;
 
 class SistemaController extends Controller
 {
     private $dadosUsuariosModel;
 
+    private $SistemaModel;
+
     public function __construct(
         \stdClass $viewModel,
-        DadosUsuariosModel $dadosUsuariosModel
+        DadosUsuariosModel $dadosUsuariosModel,
+        SistemaModel $sistemaModel
     ){
         $this->dadosUsuariosModel = $dadosUsuariosModel;
+        $this->sistemaModel = $sistemaModel;
     }    
         
     
@@ -28,21 +33,28 @@ class SistemaController extends Controller
     public function salvarDadosNota( Request $request ){
         // Define o valor default para a variável que contém o nome da imagem 
         $nameFile = null;
+
+        $dataNota = $request->input('dataArquivo');
+        $numeroNota = $request->input('numeroNota');
+        $valorNota = $request->input('valorNota');
+        
+        $idUsuario = session()->get('usuario')['usuario_id'];
+                
     
         // Verifica se informou o arquivo e se é válido
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        if ($request->hasFile('arquivoNota') && $request->file('arquivoNota')->isValid()) {
             
-            // Define um aleatório para o arquivo baseado no timestamps atual
+            // Define um aleatório para o arquivo
             $name = uniqid(date('HisYmd'));
     
-            // Recupera a extensão do arquivo
-            $extension = $request->image->extension();
+            // Pega a extensão do arquivo
+            $extension = $request->arquivoNota->extension();
     
-            // Define finalmente o nome
+            // Define o nome
             $nameFile = "{$name}.{$extension}";
     
             // Faz o upload:
-            $upload = $request->image->storeAs('categories', $nameFile);
+            $upload = $request->arquivoNota->storeAs('storage', $nameFile);
             // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
     
             // Verifica se NÃO deu certo o upload (Redireciona de volta)
@@ -51,6 +63,10 @@ class SistemaController extends Controller
                             ->back()
                             ->with('error', 'Falha ao fazer upload')
                             ->withInput();
+            else{
+                $salvarDados = $this->sistemaModel->salvarDadosNota($dataNota, $numeroNota, $valorNota, $idUsuario, $nameFile);
+                return redirect($salvarDados);
+            }
     
         }
     }

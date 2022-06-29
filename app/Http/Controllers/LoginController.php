@@ -68,9 +68,17 @@ class LoginController extends Controller
         $emailUsuario = $request->input('emaillogin');
         $senhaUsuario = $request->input('senhalogin');
 
+        //Retorna o ID do usuário que irá logar
         $verificarLogin = $this->dadosUsuariosModel->verificarLogin($emailUsuario, $senhaUsuario);
 
-        if($verificarLogin >= 1 ){
+        //Valida se encontrou algum usuário, caso tenha encontrado na função anterior irá entrar no if abaixo
+        if(!empty($verificarLogin)){
+            $request->session()->put('usuario',[
+                'usuario_id'=> $verificarLogin,
+                'usuario_email'=> $emailUsuario,
+
+            ]);
+
             return redirect('/sistema/inicio');
         }
     }

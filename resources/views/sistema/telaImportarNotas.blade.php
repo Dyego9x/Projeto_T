@@ -123,9 +123,9 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            <a class="nav-link dropdown-toggle fa fa-sign-out" href="{{asset('/login')}}" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">ADMIN</span>                               
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Logout</span>                               
                             </a>                            
                         </li>
 
@@ -142,23 +142,24 @@
                         <h1 class="h3 mb-0 text-gray-800">Importar Notas</h1>                        
                     </div>      
                     <form class="user" action="/login/salvarNota" method="post" enctype="multipart/form-data"> 
+                        @csrf
                         <br>
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="div-ecpf">
                             <div class="form-group">
                                 <h3>Data da Nota:</h3>
-                                <input type="date" name="dataArquivo" id="dataArquivo" class="form-control form-control-user" style="text-align: center">
+                                <input type="date" name="dataArquivo" id="dataArquivo" class="form-control form-control-user" style="text-align: center" required>
                             </div>                            
                         </div>  
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="div-ecpf">
                             <div class="form-group">
                                 <h3>Número da Nota:</h3>
-                                <input type="text" name="numeroNota" id="numeroNota" class="form-control form-control-user" style="text-align: center">
+                                <input type="text" name="numeroNota" id="numeroNota" class="form-control form-control-user" style="text-align: center" required>
                             </div>                            
                         </div>  
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="div-ecpf">
                             <div class="form-group">
                                 <h3>Valor da Nota:</h3>
-                                <input type="value" name="valorNota" id="valorNota" class="form-control form-control-user" style="text-align: center">
+                                <input type="value" name="valorNota" id="valorNota" class="form-control form-control-user" style="text-align: center" required>
                             </div>                            
                         </div>                                                     
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" id="div-ecpf">
@@ -167,8 +168,12 @@
                                 <label class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" for="arquivoNota">Importe o arquivo da nota</label>
                                 <span tabindex="1" class="popover-icone icone-pequeno" data-toggle="popover" data-placement="bottom" data-trigger="focus">                        
                                 </span> <br>                                    
-                                <input type="file" class="imagemEcpf form-control" style="display: none" name="arquivoNota" id="arquivoNota">
+                                <input type="file" class="imagemEcpf form-control" style="display: none" name="arquivoNota" id="arquivoNota" required>
                             </div>                            
+                        </div>
+                        <br>  
+                        <div style="align-items: center !important;">
+                            <button type="submit" class="btn btn-primary btn-user btn-block">Importar</button>
                         </div>                                      
                     </form>                    
                     <!-- Content Row -->                    
