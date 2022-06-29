@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Início</title>
+    <title>Importar Notas</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -44,7 +44,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="../sistema/inicio">
-                    <i class="fa fa-flag" aria-hidden="true"></i>
+                    <i class="fa fa-flag"></i>
                     <span>Tela inicial</span></a>
             </li>
 
@@ -57,16 +57,11 @@
             </div>            
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item">                
                 <a class="nav-link collapsed" href="{{asset('/sistema/importar-notas')}}" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-download"></i>
-                    <span>Importar Notas</span>
-                </a>
-                <a class="nav-link collapsed" href="{{asset('/sistema/listar-notas')}}" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-list-ol"></i>
-                    <span>Listar Notas</span>
+                    <span>Importar Notas</span>
                 </a>                
             </li>
         </ul>
@@ -102,30 +97,6 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
@@ -168,12 +139,19 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Início</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                            <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
-                        </a>
-                    </div>                    
-
+                        <h1 class="h3 mb-0 text-gray-800">Listar Notas</h1>                        
+                    </div>      
+                    @if(session('mensagem'))
+                        <div class="alert alert-success">
+                            <p>{{session('mensagem')}}</p>
+                        </div>
+                    @endif
+                    @if(session('erro'))
+                        <div class="alert alert-success">
+                            <p>{{session('mensagem')}}</p>
+                        </div>
+                    @endif
+                                       
                     <!-- Content Row -->                    
 
                 </div>
@@ -196,6 +174,8 @@
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{ asset('js/jquery.mask.min.js')}}"></script>
+
+    <script src="{{ asset('js/importarNotas.js')}}" type="text/javascript"></script>
 
 </body>
 

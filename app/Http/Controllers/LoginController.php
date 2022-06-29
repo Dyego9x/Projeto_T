@@ -28,7 +28,9 @@ class LoginController extends Controller
     public function index(){
 
         // return redirect('https://github.com');    
-        
+        // Deletando todas as sessões:
+        //session()->flush();
+        // dd(session()->all());
         return view('login.index');
 
     }
@@ -46,9 +48,16 @@ class LoginController extends Controller
 
     public function telaInicial(){
 
-        // return redirect('https://github.com');    
+        // return redirect('https://github.com');  
         
-        return view('sistema.telaInicialPlataforma');
+        if(session()->get('usuario')['usuario_id']){
+            return view('sistema.telaInicialPlataforma');   
+        } else{
+            session()->flush();
+            // dd(session()->all());
+            return view('login.index');
+        }      
+        
 
     }
 
@@ -68,6 +77,8 @@ class LoginController extends Controller
         $emailUsuario = $request->input('emaillogin');
         $senhaUsuario = $request->input('senhalogin');
 
+        // dd(session()->all());
+
         //Retorna o ID do usuário que irá logar
         $verificarLogin = $this->dadosUsuariosModel->verificarLogin($emailUsuario, $senhaUsuario);
 
@@ -79,8 +90,7 @@ class LoginController extends Controller
 
             ]);
 
-            return redirect('/sistema/inicio')
-            ->with('mensagem', 'Cadastro realizado com sucesso!');
+            return redirect('/sistema/inicio');
         }
     }
 

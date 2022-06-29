@@ -35,7 +35,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Projeto T<sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Projeto T</div>
             </a>
 
             <!-- Divider -->
@@ -44,7 +44,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="../sistema/inicio">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fa fa-flag"></i>
                     <span>Tela inicial</span></a>
             </li>
 
@@ -58,7 +58,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">                
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="{{asset('/sistema/listar-notas')}}" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-list-ol"></i>
                     <span>Listar Notas</span>
@@ -123,8 +123,8 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle fa fa-sign-out" href="{{asset('/login')}}" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle fa fa-sign-out" href="/sistema/logout" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Logout</span>                               
                             </a>                            
                         </li>
@@ -142,6 +142,11 @@
                         <h1 class="h3 mb-0 text-gray-800">Importar Notas</h1>                        
                     </div>      
                     @if(session('mensagem'))
+                        <div class="alert alert-success">
+                            <p>{{session('mensagem')}}</p>
+                        </div>
+                    @endif
+                    @if(session('erro'))
                         <div class="alert alert-success">
                             <p>{{session('mensagem')}}</p>
                         </div>

@@ -46,6 +46,11 @@
                                             <p>{{session('mensagem')}}</p>
                                         </div>
                                     @endif
+                                    @if(session('mensagemErro'))
+                                        <div class="alert alert-danger">
+                                            <p>{{session('mensagem')}}</p>
+                                        </div>
+                                    @endif
                                     <form class="user" action="/login/acessar" method="post">
                                         @csrf
                                         <div class="form-group">

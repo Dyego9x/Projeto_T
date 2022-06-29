@@ -25,6 +25,10 @@ Route::get('/sistema/inicio', [LoginController::class, 'telaInicial'] );
 //Direciona para a tela de importação de notas
 Route::get('/sistema/importar-notas', [SistemaController::class, 'telaImportarNotas'] );
 
+Route::get('/sistema/listar-notas', [SistemaController::class, 'telaListarNotas'] );
+
+Route::get('/sistema/logout', [SistemaController::class, 'logout'] );
+
 
 // Teste
 
