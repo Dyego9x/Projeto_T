@@ -141,6 +141,11 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Importar Notas</h1>                        
                     </div>      
+                    @if(session('mensagem'))
+                        <div class="alert alert-success">
+                            <p>{{session('mensagem')}}</p>
+                        </div>
+                    @endif
                     <form class="user" action="/login/salvarNota" method="post" enctype="multipart/form-data"> 
                         @csrf
                         <br>

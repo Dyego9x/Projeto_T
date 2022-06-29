@@ -65,7 +65,8 @@ class SistemaController extends Controller
                             ->withInput();
             else{
                 $salvarDados = $this->sistemaModel->salvarDadosNota($dataNota, $numeroNota, $valorNota, $idUsuario, $nameFile);
-                return redirect($salvarDados);
+                return redirect($salvarDados)
+                ->with('mensagem', 'Nota importada com sucesso!');
             }
     
         }

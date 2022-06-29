@@ -79,7 +79,8 @@ class LoginController extends Controller
 
             ]);
 
-            return redirect('/sistema/inicio');
+            return redirect('/sistema/inicio')
+            ->with('mensagem', 'Cadastro realizado com sucesso!');
         }
     }
 

@@ -41,6 +41,11 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Acessar plataforma</h1>
                                     </div>
+                                    @if(session('mensagem'))
+                                        <div class="alert alert-success">
+                                            <p>{{session('mensagem')}}</p>
+                                        </div>
+                                    @endif
                                     <form class="user" action="/login/acessar" method="post">
                                         @csrf
                                         <div class="form-group">
