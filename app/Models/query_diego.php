@@ -16,4 +16,7 @@ ALTER TABLE `projeto`.`projeto_usuario_nota_importada`     CHANGE `usuarionotaim
 
 ALTER TABLE `projeto`.`projeto_usuario_nota_importada` ADD CONSTRAINT `FK_projeto_usuario_nota_importada` FOREIGN KEY (`usuarionotaimportada_usuario_id`) REFERENCES `projeto_usuarios` (`usuario_id`)
 
+ALTER TABLE `projeto`.`projeto_usuario_nota_importada`     CHANGE `usuarionotaimportada_usuario_id` `usuarionotaimportada_usuario_id` INT(7) DEFAULT '(NULL)' NULL ;
+
+ALTER TABLE `projeto`.`projeto_usuario_nota_importada`     CHANGE `usuarionotaimportada_usuario_id` `usuarionotaimportada_usuario_id` INT(7) NULL ;
  -->
