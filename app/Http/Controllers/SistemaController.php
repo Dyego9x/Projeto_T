@@ -37,9 +37,15 @@ class SistemaController extends Controller
     } 
     
     public function telaListarNotas(){    
+
+        $idUsuario = session()->get('usuario')['usuario_id'];
+        $dataInicial = '0000-00-00';
+        $dataFinal = '9999-99-99';
+
+        $dados = $this->sistemaModel->buscarDadosNota($dataInicial, $dataFinal, $idUsuario);
         
-        if(session()->get('usuario')['usuario_id']){
-            return view('sistema.telaListarNotas'); 
+        if(session()->get('usuario')['usuario_id']){            
+            return view('sistema.telaListarNotas', compact('dados')); 
         } else{
             session()->flush();
             // dd(session()->all());
@@ -117,7 +123,9 @@ class SistemaController extends Controller
 
         $dados = $this->sistemaModel->buscarDadosNota($dataInicial, $dataFinal, $idUsuario);
 
-        dd($dados);
+        return view('sistema.telaListarNotas', compact('dados'));
+
+        // dd($dados);
 
     }
 

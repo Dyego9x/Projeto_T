@@ -196,7 +196,7 @@
                                     <thead>
 
                                         <tr>
-
+                                            <th>Nota</th>
                                             <th>Data</th>
                                             <th>Valor</th>
                                             <th>Arquivo</th>
@@ -207,10 +207,24 @@
 
                                     </thead>
 
-                                    <tbody id="empresas">
+                                    <tbody id="notas">
+                                        <ul>
+                                            @if ('dados')
+                                                @foreach ($dados as $dado)
+                                                    <tr>
+                                                        <th>{{$dado->usuarionotaimportada_numero}}</th>
+                                                        <th>{{$dado->usuarionotaimportada_data}}</th>
+                                                        <th>{{$dado->usuarionotaimportada_valor}}</th>
+                                                        <th>Arquivo</th>
+                                                        <th>Excluir</th>
+                                                        <th>Editar</th>                                            
 
+                                                    </tr>                                                    
+                                                @endforeach
+                                            @endif
+                                            
+                                        </ul>
                                         
-
                                     </tbody>
 
                                 </table>
