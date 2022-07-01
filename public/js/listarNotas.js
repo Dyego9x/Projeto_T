@@ -1,0 +1,3 @@
+function excluirNota (){
+    alert("Nota");
+}

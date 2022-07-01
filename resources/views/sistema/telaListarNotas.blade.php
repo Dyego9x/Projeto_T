@@ -215,9 +215,9 @@
                                                         <th>{{$dado->usuarionotaimportada_numero}}</th>
                                                         <th>{{$dado->usuarionotaimportada_data}}</th>
                                                         <th>{{$dado->usuarionotaimportada_valor}}</th>
-                                                        <th>Arquivo</th>
-                                                        <th>Excluir</th>
-                                                        <th>Editar</th>                                            
+                                                        <th><span><i class="fa fa-download" aria-hidden="true"></i></span></th>
+                                                        <th><span onclick="excluirNota()"><i class="fa fa-trash" aria-hidden="true"></i></span></th>
+                                                        <th><span><i class="fa fa-wrench" aria-hidden="true"></i></span></th>                                            
 
                                                     </tr>                                                    
                                                 @endforeach
@@ -258,7 +258,7 @@
     <script src="{{ asset('js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{ asset('js/jquery.mask.min.js')}}"></script>
 
-    <script src="{{ asset('js/importarNotas.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/listarNotas.js')}}" type="text/javascript"></script>
 
 </body>
 
