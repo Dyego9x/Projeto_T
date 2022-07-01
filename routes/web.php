@@ -60,3 +60,6 @@ Route::post('/login/salvarNota', [SistemaController::class, 'salvarDadosNota'] )
 
 //Consulto os dados das notas
 Route::post('/sistema/buscarNotas', [SistemaController::class, 'buscarDadosNota'] );
+
+//Excluir notas
+Route::post('/sistema/excluirNotas', [SistemaController::class, 'excluirDadosNota'] );

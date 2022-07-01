@@ -216,7 +216,7 @@
                                                         <th>{{$dado->usuarionotaimportada_data}}</th>
                                                         <th>{{$dado->usuarionotaimportada_valor}}</th>
                                                         <th><span><i class="fa fa-download" aria-hidden="true"></i></span></th>
-                                                        <th><span onclick="excluirNota()"><i class="fa fa-trash" aria-hidden="true"></i></span></th>
+                                                        <th><span onclick="excluirNota({{$dado->usuarionotaimportada_id}}, {{$dado->usuarionotaimportada_usuario_id}})"><i class="fa fa-trash" aria-hidden="true"></i></span></th>
                                                         <th><span><i class="fa fa-wrench" aria-hidden="true"></i></span></th>                                            
 
                                                     </tr>                                                    
