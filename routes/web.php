@@ -63,3 +63,6 @@ Route::post('/sistema/buscarNotas', [SistemaController::class, 'buscarDadosNota'
 
 //Excluir notas
 Route::post('/sistema/excluirNotas', [SistemaController::class, 'excluirDadosNota'] );
+
+//Editar notas
+Route::post('/sistema/editar-notas', [SistemaController::class, 'editarDadosNota'] );

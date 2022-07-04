@@ -154,4 +154,31 @@ class SistemaController extends Controller
         return json_encode($dadosRetorno);
     }
 
+    public function editarDadosNota(Request $request){
+        $idNota = $request->input('idNota');
+        $idUsuario = session()->get('usuario')['usuario_id'];
+        $valorNota = $request->input('valorNota');
+        $dataNota = $request->input('dataNota');
+        // print($idNota);exit;
+
+        $dadosRetorno = ['erro' => '','dados' => ''];        
+        if(!empty($idNota) && !empty($idUsuario)){            
+            $retorno = $this->sistemaModel->editarNota($idNota, $idUsuario, $valorNota, $dataNota);
+            // print($retorno);exit;
+            if($retorno){
+                $dadosRetorno['erro'] = 'N';
+                $dadosRetorno['dados'] = 'sistema.telaListarNotas';                             
+            }else{
+                $dadosRetorno['erro'] = 'S';
+                $dadosRetorno['dados'] = 'Não deletou do banco';               
+            }
+        }     
+        else{
+            $dadosRetorno['erro'] = 'S';  
+            $dadosRetorno['dados'] = 'Dados vazios';               
+        }   
+
+        return json_encode($dadosRetorno);
+    }
+
 }

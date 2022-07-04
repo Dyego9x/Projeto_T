@@ -45,4 +45,15 @@ class SistemaModel extends Model
 
         return ($resultado);
     }
+
+    public function editarNota($idNota, $idUsuario, $valorNota, $dataNota){
+        $resultado = DB::table($this->table)
+        ->where('usuarionotaimportada_usuario_id', $idUsuario)
+        ->where('usuarionotaimportada_id', $idNota)
+        ->update(['usuarionotaimportada_valor' => $valorNota,
+                    'usuarionotaimportada_data' => $dataNota
+        ]);
+
+        return ($resultado);
+    }
 }

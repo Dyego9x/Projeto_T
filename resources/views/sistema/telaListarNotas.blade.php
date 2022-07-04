@@ -14,6 +14,8 @@
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -24,6 +26,45 @@
 </head>
 
 <body id="page-top">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar dados da nota:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" onclick="esconderModal()">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <form>
+                            <input type="text" class="form-control" id="id_nota" name="id_nota" hidden>
+                            <div class="form-group col-md-6">
+                                <label for="recipient-name" class="col-form-label">Data Atual:</label>
+                                <input type="text" class="form-control" id="atual-data" disabled>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="recipient-name" class="col-form-label">Nova Data:</label>
+                                <input type="date" name="dataNota" id="dataNota" class="form-control form-control-user" style="text-align: center" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="message-text" class="col-form-label">Valor Atual:</label>
+                                <input type="text" class="form-control" id="atual-valor" disabled>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="message-text" class="col-form-label">Novo valor:</label>
+                                <input type="value" name="valorNota" id="valorNota" class="form-control form-control-user" style="text-align: center" required>
+                            </div>
+                        </form>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="esconderModal()">Fechar</button>
+                    <button type="button" class="btn btn-primary" onclick="editarNota( id_nota.value, valorNota.value, dataNota.value)">Atualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -154,7 +195,7 @@
                     @endif
 
                     <form class="user" action="/sistema/buscarNotas" method="post" enctype="multipart/form-data"> 
-                        @csrf
+                        @csrf                                               
                         <br>
                         <br>
                         <div class="row">
@@ -185,6 +226,7 @@
                                                 
                         <br>
                         <br>
+                        <button type="button" class="btn btn-primary" onclick="ativarModal()">Teste</button>
                         <div class="row">
 
                             <div class="col-md-12" id="total-datatable">
@@ -218,7 +260,7 @@
                                                         <th name='valorNota'>{{$dado->usuarionotaimportada_valor}}</th>
                                                         <th name='baixarNota'><span><i class="fa fa-download" aria-hidden="true"></i></span></th>
                                                         <th name='excluirNota'><span onclick="excluirNota({{$dado->usuarionotaimportada_id}}, {{$dado->usuarionotaimportada_usuario_id}})"><i class="fa fa-trash" aria-hidden="true"></i></span></th>
-                                                        <th name="editarNota"><span><i class="fa fa-wrench" aria-hidden="true"></i></span></th>                                            
+                                                        <th name="editarNota"><span><i class="fa fa-wrench" aria-hidden="true" onclick="ativarModal('{{$dado->usuarionotaimportada_data}}' , '{{$dado->usuarionotaimportada_valor}}' , '{{$dado->usuarionotaimportada_numero}}', '{{$dado->usuarionotaimportada_id}}')"></i></span></th>                                            
 
                                                     </tr>                                                    
                                                 @endforeach
@@ -258,9 +300,12 @@
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{ asset('js/jquery.mask.min.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
-    <script src="{{ asset('js/listarNotas.js?v1')}}" type="text/javascript"></script>
-    <script src="toastr.js"></script>
+    <script src="{{ asset('js/listarNotas.js?v1')}}" type="text/javascript"></script>    
+
 
 </body>
 
