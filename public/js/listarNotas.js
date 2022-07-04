@@ -1,26 +1,22 @@
-function excluirNota ($idNota, $idUsuario){
-    alert($idNota);    
+function excluirNota (idNota, idUsuario){      
 
     $.ajax({
         type: 'POST',
         url: "/sistema/excluirNotas",        
-        data: { idNota: $idNota, idUsuario: $idUsuario },
-        success: function(data) {
-            if ( data ){
-                
-                if ( concorda == 'S' ){
-                    toastr["success"]('Contratação Realizada com Sucesso! Estamos te preparando para o agendamento de sua vídeoconferência!',{timeOut: 3600});                    
-                                    
-                }
-                
-                // Encaminhar para o final
-                location.href=data;                
+        data: { idNota: idNota, idUsuario: idUsuario, _token: $('input[name=_token]').val()},
+        dataType: 'json',
+        success: function(retorno) {            
+            if ( retorno.erro == 'N' ){
+                alert('Nota excluída com sucesso!');
+                location.href ='/sistema/listar-notas';    
+                                 
             }
-            else
-                toastr["warning"]('Erro ao confirmar sua solicitação do e-CPF.');
+            else{
+                alert('Erro!');
+            }            
         },
         error: function() {
-            toastr["warning"]('Erro ao confirmar sua solicitação do e-CPF.');
+            alert('Erro!');
         }
     });
 }

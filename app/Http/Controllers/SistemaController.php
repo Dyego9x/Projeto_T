@@ -129,4 +129,29 @@ class SistemaController extends Controller
 
     }
 
+    public function excluirDadosNota(Request $request){
+        $idNota = $request->input('idNota');
+        $idUsuario = $request->input('idUsuario');
+        // print($idNota);exit;
+
+        $dadosRetorno = ['erro' => '','dados' => ''];        
+        if(!empty($idNota) && !empty($idUsuario)){            
+            $retorno = $this->sistemaModel->excluirNota($idNota, $idUsuario);
+            // print($retorno);exit;
+            if($retorno){
+                $dadosRetorno['erro'] = 'N'; 
+                $dadosRetorno['dados'] = 'sistema.telaListarNotas';                             
+            }else{
+                $dadosRetorno['erro'] = 'S'; 
+                $dadosRetorno['dados'] = 'Não deletou do banco';               
+            }
+        }     
+        else{
+            $dadosRetorno['erro'] = 'S';  
+            $dadosRetorno['dados'] = 'Dados vazios';               
+        }   
+
+        return json_encode($dadosRetorno);
+    }
+
 }

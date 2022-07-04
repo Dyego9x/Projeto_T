@@ -36,4 +36,13 @@ class SistemaModel extends Model
 
         return ($resultado);
     }
+
+    public function excluirNota($idNota, $idUsuario){
+        $resultado = DB::table($this->table)
+        ->where('usuarionotaimportada_usuario_id', $idUsuario)
+        ->where('usuarionotaimportada_id', $idNota)
+        ->delete();
+
+        return ($resultado);
+    }
 }

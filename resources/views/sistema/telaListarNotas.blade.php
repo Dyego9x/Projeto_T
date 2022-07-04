@@ -13,6 +13,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -212,12 +213,12 @@
                                             @if ('dados')
                                                 @foreach ($dados as $dado)
                                                     <tr>
-                                                        <th>{{$dado->usuarionotaimportada_numero}}</th>
-                                                        <th>{{$dado->usuarionotaimportada_data}}</th>
-                                                        <th>{{$dado->usuarionotaimportada_valor}}</th>
-                                                        <th><span><i class="fa fa-download" aria-hidden="true"></i></span></th>
-                                                        <th><span onclick="excluirNota({{$dado->usuarionotaimportada_id}}, {{$dado->usuarionotaimportada_usuario_id}})"><i class="fa fa-trash" aria-hidden="true"></i></span></th>
-                                                        <th><span><i class="fa fa-wrench" aria-hidden="true"></i></span></th>                                            
+                                                        <th name='numeroNota'>{{$dado->usuarionotaimportada_numero}}</th>
+                                                        <th name='dataNota'>{{$dado->usuarionotaimportada_data}}</th>
+                                                        <th name='valorNota'>{{$dado->usuarionotaimportada_valor}}</th>
+                                                        <th name='baixarNota'><span><i class="fa fa-download" aria-hidden="true"></i></span></th>
+                                                        <th name='excluirNota'><span onclick="excluirNota({{$dado->usuarionotaimportada_id}}, {{$dado->usuarionotaimportada_usuario_id}})"><i class="fa fa-trash" aria-hidden="true"></i></span></th>
+                                                        <th name="editarNota"><span><i class="fa fa-wrench" aria-hidden="true"></i></span></th>                                            
 
                                                     </tr>                                                    
                                                 @endforeach
@@ -258,7 +259,8 @@
     <script src="{{ asset('js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{ asset('js/jquery.mask.min.js')}}"></script>
 
-    <script src="{{ asset('js/listarNotas.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/listarNotas.js?v1')}}" type="text/javascript"></script>
+    <script src="toastr.js"></script>
 
 </body>
 
