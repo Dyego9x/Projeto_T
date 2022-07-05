@@ -21,10 +21,6 @@ function excluirNota (idNota, idUsuario){
     });
 }
 
-function editarNotaTeste (idNota, idUsuario, valorNota, dataNota){    
-    alert(valorNota);
-}
-
 function editarNota (idNota, valorNota, dataNota){          
 
     $.ajax({
@@ -64,4 +60,26 @@ function esconderModal(){
     $("#exampleModal").modal('hide');
 }
 
+function baixarArquivo(idNota, valorNota, dataNota){          
+
+        $.ajax({
+            type: 'POST',
+            url: "/sistema/download",        
+            data: { idNota: idNota , _token: $('input[name=_token]').val()},
+            dataType: 'json',
+            success: function(retorno) {            
+                if ( retorno.erro == 'N' ){
+                    alert('Valores atualizados com sucesso!');
+                    href(retorno.dados);
+                                     
+                }
+                else{
+                    alert('Erro!');
+                }            
+            },
+            error: function() {
+                alert('Erro!');
+            }
+        });
+}
 

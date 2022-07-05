@@ -29,6 +29,8 @@ Route::get('/sistema/listar-notas', [SistemaController::class, 'telaListarNotas'
 
 Route::get('/sistema/logout', [SistemaController::class, 'logout'] );
 
+Route::post('/sistema/download', [SistemaController::class, 'downloadNota'] );
+
 
 // Teste
 

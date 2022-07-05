@@ -258,7 +258,7 @@
                                                         <th name='numeroNota'>{{$dado->usuarionotaimportada_numero}}</th>
                                                         <th name='dataNota'>{{$dado->usuarionotaimportada_data}}</th>
                                                         <th name='valorNota'>{{$dado->usuarionotaimportada_valor}}</th>
-                                                        <th name='baixarNota'><span><i class="fa fa-download" aria-hidden="true"></i></span></th>
+                                                        <th name='baixarNota'><span><i class="fa fa-download" aria-hidden="true" onclick="baixarArquivo('{{$dado->usuarionotaimportada_id}}')"></i></span></th>
                                                         <th name='excluirNota'><span onclick="excluirNota({{$dado->usuarionotaimportada_id}}, {{$dado->usuarionotaimportada_usuario_id}})"><i class="fa fa-trash" aria-hidden="true"></i></span></th>
                                                         <th name="editarNota"><span><i class="fa fa-wrench" aria-hidden="true" onclick="ativarModal('{{$dado->usuarionotaimportada_data}}' , '{{$dado->usuarionotaimportada_valor}}' , '{{$dado->usuarionotaimportada_numero}}', '{{$dado->usuarionotaimportada_id}}')"></i></span></th>                                            
 

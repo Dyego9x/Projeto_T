@@ -56,4 +56,13 @@ class SistemaModel extends Model
 
         return ($resultado);
     }
+
+    public function nomeArquivo($idUsuario, $idNota) {
+        $nomeArquivo = DB::table($this->table)
+            ->where('usuarionotaimportada_usuario_id',$idUsuario)
+            ->where('usuarionotaimportada_id',$idNota)    
+            ->value('usuarionotaimportada_arquivo');
+
+        return $nomeArquivo;
+    }
 }

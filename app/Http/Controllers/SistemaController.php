@@ -181,4 +181,35 @@ class SistemaController extends Controller
         return json_encode($dadosRetorno);
     }
 
+    public function downloadNota(Request $request){
+        $idNota = $request->input('idNota');
+        $idUsuario = session()->get('usuario')['usuario_id'];
+
+
+        $dadosRetorno = ['erro' => '','dados' => ''];        
+        if(!empty($idNota) && !empty($idUsuario)){            
+            $nomeArquivo = $this->sistemaModel->nomeArquivo($idUsuario, $idNota);            
+            if($nomeArquivo){
+                $dadosRetorno['erro'] = 'N';
+                $dadosRetorno['dados'] = 'Encontrado'; 
+                // dd('../public/storage/'.$idUsuario.'/'.$nomeArquivo);
+
+                // $dadosRetorno['dados'] = response()->download(storage_path('../public/storage/'.$idUsuario.'/'.$nomeArquivo)); 
+                $dadosRetorno['dados'] = storage_path('../public/storage/'.$idUsuario.'/'.$nomeArquivo); 
+                
+            }else{
+                $dadosRetorno['erro'] = 'S';
+                $dadosRetorno['dados'] = 'Não encontrado';      
+                       
+            }
+        }     
+        else{
+            $dadosRetorno['erro'] = 'S';  
+            $dadosRetorno['dados'] = 'Dados vazios';    
+                      
+        } 
+        return json_encode($dadosRetorno);
+        
+    }
+
 }

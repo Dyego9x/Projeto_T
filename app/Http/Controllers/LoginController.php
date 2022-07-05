@@ -114,6 +114,12 @@ class LoginController extends Controller
             $enviar = $this->emailController->configurarEmail($emailUsuario, $pegarsenha);
         }
 
+        if($enviar){
+            return redirect('/login/esqueceu-senha');
+        }else{
+            return redirect('/login');
+        }
+
     }
 
 }

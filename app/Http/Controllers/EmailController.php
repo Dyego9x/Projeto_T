@@ -16,6 +16,7 @@ use PHPMailer\PHPMailer\Exception;
 class EmailController extends Controller
 {
     public function configurarEmail($emailUsuario, $pegarSenha){
+        $erro = false;
         
         // Instanciamos a classe PHPMailer
         $mail = new PHPMailer();
@@ -33,8 +34,8 @@ class EmailController extends Controller
         $mail->SMTPSecure = 'tls';
 
 
-        $mail->Username = 'diego.fernando.teste@gmail.com';
-        $mail->Password = 'd1i2e3g4o5';
+        $mail->Username = '';
+        $mail->Password = '';
 
         // Para autenticar via SSL precisamos informar a porta 587, conforme recomendado pelo Gmail
         $mail->Port = 587;       
@@ -65,11 +66,11 @@ class EmailController extends Controller
         // $mail->send();
         // dd($emailUsuario);
         if(!$mail->send()) {
-            dd($mail->ErrorInfo);
-            return redirect('/login/esqueceu-senha');
-        } else {
-            dd('Deu bom');
-            return redirect('/login');
+            // dd($mail->ErrorInfo);
+            $erro = true;
+            return $erro;
+        } else {            
+            return $erro;
             
         }
     }
