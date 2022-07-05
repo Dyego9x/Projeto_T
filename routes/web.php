@@ -52,6 +52,9 @@ Route::post('/login/salvar', [LoginController::class, 'cadastrar'] );
 // Retorna a tela inicial
 Route::post('/login/acessar', [LoginController::class, 'acessarPlataforma'] );
 
+// Envia email para o cliente com a senha
+Route::post('/login/email-recuperar-senha', [LoginController::class, 'esqueceuSenhaEmail'] );
+
 //
 Route::post('/login/trocarsenha', [LoginController::class, 'trocarSenha'] );
 
@@ -66,3 +69,4 @@ Route::post('/sistema/excluirNotas', [SistemaController::class, 'excluirDadosNot
 
 //Editar notas
 Route::post('/sistema/editar-notas', [SistemaController::class, 'editarDadosNota'] );
+

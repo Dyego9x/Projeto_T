@@ -30,6 +30,29 @@ class DadosUsuariosModel extends Model
         return $idUsuario;
     }
 
+    public function pegarSenha($email, $cpf){        
+
+        $senhaUsuario = DB::table($this->table)
+            ->where('usuario_email',$email)                    
+            ->where('usuario_cpf',$cpf)      
+            ->value('usuario_senha');        
+
+        return $senhaUsuario;
+    }
+
+    public function verificarCadastroEmail ($email, $cpf){
+        $CountUsuario = DB::table($this->table)
+            ->where('usuario_email',$email)                    
+            ->where('usuario_cpf',$cpf)  
+            ->count('usuario_email');
+            
+            
+            
+            // dd($CountUsuario);
+
+        return $CountUsuario;
+    }
+
     public function trocarSenha ($senha, $email){
         DB::table($this->table)
             -> where('senha',$senha)

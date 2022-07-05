@@ -42,12 +42,16 @@
                                         <h1 class="h4 text-gray-900 mb-2">Esqueceu sua senha?</h1>
                                         <p class="mb-4">Informe o CPF cadastrado abaixo que iremos encaminhar um link de redefinição de senha para o mesmo!</p>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" action="/login/email-recuperar-senha" method="post">
                                         @csrf
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                id="exampleInputEmail" name="exampleInputEmail" aria-describedby="emailHelp" style="text-align: center"
                                                 placeholder="Informe o Email Cadastrado...">
+                                        </div>
+                                        <div class="form-group">                                           
+                                            <input type="text" class="form-control form-control-user" id="cpfRecuperar" name="cpfRecuperar" style="text-align: center"
+                                                placeholder="CPF" maxlength="14">
                                         </div>
                                         <div style="align-items: center !important;">
                                             <button type="submit" class="btn btn-primary btn-user btn-block">Encaminhar Link</button>
@@ -80,8 +84,12 @@
     <!-- Core plugin JavaScript-->
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
+ 
+
+    <script src="{{ asset('js/login.js')}}" type="text/javascript"></script>
+       <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset('js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.mask.min.js')}}"></script>
 
 </body>
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use App\models\DadosUsuariosModel;
+// use App\Controllers\EmailController;
 
 class LoginController extends Controller
 {
@@ -15,9 +16,11 @@ class LoginController extends Controller
 
     public function __construct(
         \stdClass $viewModel,
-        DadosUsuariosModel $dadosUsuariosModel
+        DadosUsuariosModel $dadosUsuariosModel,
+        EmailController $emailController
     ){
         $this->dadosUsuariosModel = $dadosUsuariosModel;
+        $this->emailController = $emailController;
     }
 
 
@@ -92,6 +95,25 @@ class LoginController extends Controller
 
             return redirect('/sistema/inicio');
         }
+    }
+
+    public function esqueceuSenhaEmail(Request $request){        
+
+        $emailUsuario = $request->input('exampleInputEmail');
+        $cpfUsuario = $request->input('cpfRecuperar');
+
+        $verificarEmail = $this->dadosUsuariosModel->verificarCadastroEmail($emailUsuario, $cpfUsuario);
+
+        
+
+        if($verificarEmail == '1'){
+            
+
+            $pegarsenha = $this->dadosUsuariosModel->pegarSenha($emailUsuario, $cpfUsuario);
+            // dd($cpfUsuario);
+            $enviar = $this->emailController->configurarEmail($emailUsuario, $pegarsenha);
+        }
+
     }
 
 }
